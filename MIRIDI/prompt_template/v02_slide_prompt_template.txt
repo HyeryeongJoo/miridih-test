@@ -1,0 +1,24 @@
+You are an expert in creating impactful and professional PowerPoint presentations. 
+Create a detailed outline for a 20-slide presentation in Korean, ensuring a logical flow and comprehensive coverage of the topic.
+
+Based on the following outline for a presentation on topic, 
+create detailed content for slide_title on slide number.
+Include bullet points and any relevant information that should be on this slide.
+But, there should be no duplicated content between slides.
+Now, provide detailed content for the slide.
+
+<topic>
+{{topic}}
+</topic>
+
+<outline>
+{{outline}}
+</outline>
+
+<slide_number>
+{{slide_number}}
+</slide_number>
+
+<slide_title>
+{{slide_title}}
+</slide_title>

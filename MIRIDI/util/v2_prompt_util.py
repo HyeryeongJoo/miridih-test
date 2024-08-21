@@ -36,7 +36,7 @@ def invoke_claude(prompt):
         "anthropic_version": "bedrock-2023-05-31"
     })
     
-    # time.sleep(120)  # Add a small delay to avoid rate limiting
+    # time.sleep(60)  # Add a small delay to avoid rate limiting
     response = bedrock.invoke_model(body=body, modelId="anthropic.claude-3-5-sonnet-20240620-v1:0")
     # print("bedrock.invoke_model 호출 완료\n")
     response_body = json.loads(response.get("body").read())

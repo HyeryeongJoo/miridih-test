@@ -20,5 +20,5 @@ Now, provide detailed content for the slide.
 </slide_number>
 
 <slide_title>
-{{slide_title}}
+slide_title
 </slide_title>

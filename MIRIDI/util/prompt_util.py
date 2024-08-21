@@ -33,12 +33,12 @@ def invoke_claude(prompt):
     
     time.sleep(120)  # Add a small delay to avoid rate limiting
     response = bedrock.invoke_model(body=body, modelId="anthropic.claude-3-5-sonnet-20240620-v1:0")
-    print("bedrock.invoke_model 호출 완료\n")
+    # print("bedrock.invoke_model 호출 완료\n")
     response_body = json.loads(response.get("body").read())
     output_text = response_body.get("content")[0].get('text')
 
-    # print(output_text)
-    print("호출")
+    print(output_text)
+    # print("호출")
     
     input_token_count = int(response["ResponseMetadata"]["HTTPHeaders"]["x-amzn-bedrock-input-token-count"])
     output_token_count = int(response["ResponseMetadata"]["HTTPHeaders"]["x-amzn-bedrock-output-token-count"])
@@ -142,31 +142,33 @@ def generate_slide_content(slide_prompt_list, output_dir, include_outline):
     slides = [] 
     total_input_tokens = 0 
     total_output_tokens =0
+
     for i, slide_prompt in enumerate(slide_prompt_list):
+        print(f"{i+1}번째 호출 시작합니다.\n")
         slide_content, input_tokens, output_tokens = invoke_claude(slide_prompt)
         # slides.append(f"Slide {i+1}:\n{slide_content}")
         slides.append(f"{slide_content}")
-        # print(f"Generated content for Slide {i+1}")
-        # print(f"Generated content for ")
-        print(f"{i+1}th call: Input tokens: {input_tokens}, Output tokens: {output_tokens} \n")
+
+        # Print all slides
+        print("\n Detailed Slide Contents:")
+        for slide in slides:
+            print(slide)
+            print("\n" + "-"*50 + "\n")
+
+        print(f"{i+1}번째 호출: Input tokens: {input_tokens}, Output tokens: {output_tokens} \n")
         
         total_input_tokens += input_tokens
         total_output_tokens += output_tokens
 
-        #time.sleep(80)  # Add a small delay to avoid rate limiting
+        # time.sleep(120)  # Add a small delay to avoid rate limiting
         
-    # Print all slides
-    # print("\n Detailed Slide Contents:")
-    # for slide in slides:
-    #     print(slide)
-    #     print("\n" + "-"*50 + "\n")
 
     print("\n" + "="*50 + "\n")
     print("PowerPoint presentation generation complete!")
     print(f"Total Input Tokens: {total_input_tokens}")
     print(f"Total Output Tokens: {total_output_tokens}")
 
-    if include_outline:
+    if include_outline: 
         output_file = f"result_include_outline_each_slide.txt"
     else:
         output_file = f"result_exclude_outline_each_slide.txt"

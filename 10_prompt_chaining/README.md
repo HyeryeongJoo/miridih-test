@@ -41,7 +41,7 @@
 * 단일 리전에서 추론할 경우 
     * generate-powerpoint.ipynb 파일에서 prompt_util.py 파일을 import
 2. generate-powerpoint.ipynb 파일 실행
-3. 생성된 콘텐츠를 지정된 출력 디렉토리(results 폴더)에 저장됨
+3. 생성된 콘텐츠는 지정된 출력 디렉토리(results 폴더)에 저장됨
 
 ## 주요 함수
 * invoke_claude(): Claude 모델 호출 및 텍스트 생성

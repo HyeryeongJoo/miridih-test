@@ -15,6 +15,11 @@ import time
 #    "anthropic.claude-3-5-sonnet-20240620-v1:0": "sonnet35",    
 # }
 
+# Bedrock cross-region inference
+primary_region = "us-east-1"
+# primary_region = "us-west-2"
+inferenceProfileId = 'us.anthropic.claude-3-5-sonnet-20240620-v1:0'
+
 # parameters to consolidate inpute/output tokens after chaining prompt invoke calls
 merged_total_input_tokens = 0
 merged_total_output_tokens = 0
@@ -30,7 +35,7 @@ def load_template_from_file(file_path):
 
 
 def invoke_claude(prompt):
-    bedrock = boto3.client(service_name="bedrock-runtime")
+    bedrock = boto3.client(service_name="bedrock-runtime", region_name=primary_region)
     body = json.dumps({
         "max_tokens": 4196,
         "messages": [{"role": "user", "content": prompt}],
@@ -38,7 +43,7 @@ def invoke_claude(prompt):
     })
 
     # time.sleep(60)  # Add a small delay to avoid rate limiting
-    response = bedrock.invoke_model(body=body, modelId="anthropic.claude-3-5-sonnet-20240620-v1:0")
+    response = bedrock.invoke_model(body=body, modelId=inferenceProfileId)
 
     response_body = json.loads(response.get("body").read())
     output_text = response_body.get("content")[0].get('text')
@@ -74,14 +79,11 @@ def create_slide_prompt(slide_prompt_template, topic, outline, start_slide, end_
 
 
 def generate_slide_content(slide_prompt, outline, output_dir, include_outline, start_slide, end_slide, tries):
-    global merged_total_input_tokens
-    global merged_total_output_tokens
 
     slides = [] 
     total_input_tokens = 0 
     total_output_tokens =0
     i=tries
-
     
     slide_content, input_tokens, output_tokens = invoke_claude(slide_prompt)
 

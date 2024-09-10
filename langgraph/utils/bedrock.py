@@ -130,8 +130,6 @@ class bedrock_info():
         return cls._BEDROCK_MODEL_INFO[model_name]
     
 
-from botocore.exceptions import ClientError
-
 def converse_invoke(bedrock_client,
                           model_id,
                           input_text):

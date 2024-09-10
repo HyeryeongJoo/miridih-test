@@ -1,0 +1,2 @@
+You are a web designer.
+Your task is to create a representative image for a presentation that matches the given {{topic}} of the presenstation slides.

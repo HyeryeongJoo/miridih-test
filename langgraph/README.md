@@ -1,23 +1,29 @@
 # AI-Powered 프레젠테이션 생성 with Prompt Chaining, LangGrpah
 
 ## 개요
-이 저장소에는 Amazon Bedrock 런타임에서 Anthropic의 Claude 3 Haiku, Amazon의 Titan Image Generator v2 모델을 사용해 프레젠테이션의 내용과 대표 이미지를을 자동으로 작성하는 Python 예제 코드가 포함되어 있습니다. Claude 3 Haiku 모델은 주어진 주제에 대해 10장의 프레젠테이션의 내용, 추천 시각적 요소, 발표자 노트를 만들어봅니다. LLM의 최대 출력 토큰 한계를 해결하기 위해 Prompt Chaining 기법을 사용하여 두 번에 나누어 생성할 것이기 때문에 1-5장, 6-10장을 만드는 프롬프트를 각각 생성합니다. 
+이 저장소에는 Amazon Bedrock 런타임에서 Anthropic의 Claude 3 Haiku, Amazon의 Titan Image Generator v2 모델을 사용해 프레젠테이션의 내용과 대표 이미지를 자동으로 작성하는 Python 예제 코드가 포함되어 있습니다. 10장의 프레젠테이션의 내용을 만들 때, LLM의 최대 출력 토큰 한계를 해결하기 위해 Prompt Chaining 기법을 사용하여 두 번에 나누어 생성합니다. 1-5장, 6-10장을 만드는 프롬프트를 각각 생성합니다. 
 
 ## 주요 기능
-* Basic (01_basic_run_prompt.ipynb)에서는 Amazon Bedrock 런타임에서 Claude 3 Haiku 모델을 사용해 주어진 주제에 대한 프레젠테이션 내용을 생성합니다. 
+* Basic (01_basic_run_prompt.ipynb)에서는 Amazon Bedrock 런타임에서 Claude 3 Haiku 모델을 사용해 주어진 주제에 대한 프레젠테이션 내용을 생성합니다.
+
 <img src="./imgs/basic_workflow_serial.png"  width="600">
+
 <img src="./imgs/basic_workflow_parallel.png"  width="600">
+
     * 10장의 프레젠테이션을 생성하기 위해 다음과 같은 단계를 거칩니다.
         * 1) 설정한 주제로 프레젠테이션의 개요를 생성하는 프롬프트 생성 
         * 2) 위에서 만든 프롬프트를 사용해 프레젠테이션 개요 생성
         * 3) 생성된 개요를 기반으로 프레젠테이션 내용 (1. 내용, 2. 추천 시각화 요소, 3. 발표자 노트)을 상세히 작성하는 프롬프트를 생성  생성하는 프롬프트 생성
         * 4) 위에서 만든 프롬프트를 사용해 프레젠테이션 내용 생성
         * 5) 위에서 만들어진 내용을 병합
+
     * 위 단계를 직렬로 실행한 결과와 3,4의 단계를 병렬로 동시에 실행한 결과를 비교합니다.
         * 테스트를 했을 때, 동일한 프레젠테이션 내용을 만들기 위해 걸린 시간을 계산했을 때 병렬로 실행했을 때 걸린 시간(44ms)이 직렬로 실행했을 때(57ms)보다 짧았습니다.
 
 * Advanced (02_advanced_toolNode_run_prompt.ipynb)에서는 ToolNode를 활용하는 방법을 제공합니다. 
+
 <img src="./imgs/advanced_workflow.png"  width="600">
+
     * 설정한 주제로 프레젠테이션을 대표하는 이미지도 Amazon의 Titan Image Generator v2 모델을 사용해 생성
     * 설정한 주제로 프레젠테이션의 개요를 생성하는 프롬프트와 대표 이미지를 생성하는 프롬프트를 LangChain의 tool로 정의하고, LangGraph에서는 이 tool들을 호출하기 위해 ToolNode를 사용
 
@@ -31,6 +37,7 @@
 
 ## 해결 방법
 이러한 상황에서 LangGraph를 사용하면 워크플로우를 더 체계적으로 관리하고, 상태 전달을 간소화하며, 실행 순서를 명확하게 제어할 수 있어 위의 문제들을 효과적으로 해결할 수 있습니다. LangGraph는 Agentic LLM 애플리케이션의 핵심 요소를 구현하는데 이상적인 도구 중 하나입니다. LangGraph는 복잡한 워크플로우와 다중 단계 프로세스를 관리하는 데 유용하며, 다음과 같은 이점을 제공합니다.
+
     * 상태 관리
     * 워크 플로우 시각화
     * 유연한 라우팅
@@ -39,6 +46,7 @@
     * 병렬 처리
     * 인간-AI 상호 작용
     * 확장성
+
 따라서, function call이 많은 복잡한 시스템을 구축할 때 LangGraph를 사용하면 코드의 구조화, 관리, 디버깅, 그리고 최적화에 도움이 될 수 있습니다.
 
 ## 요구 사항
@@ -48,9 +56,9 @@
 * AWS CLI 설치 및 구성
 
 ## 사용 방법
-1. 00_setup.ipynb 실행
-2. 01_basic_run_prompt.ipynb 실행
-3. 02_advanced_toolNode_run_prompt.ipynb 실행
+1. [00_setup.ipynb 실행](./00_setup.ipynb)
+2. [01_basic_run_prompt.ipynb 실행](./01_basic_run_prompt.ipynb)
+3. [02_advanced_toolNode_run_prompt.ipynb 실행](./02_advanced_toolNode_run_prompt.ipynb)
 4. 02_advanced_toolNode_run_prompt.ipynb 에서 생성된 프레젠테이션 대표 이미지는 지정된 출력 디렉토리(img_output 폴더)에 저장됨
 
 ## 추가 리소스

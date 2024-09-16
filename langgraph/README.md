@@ -5,12 +5,7 @@
 
 
 ## 주요 기능
-* Basic (01_basic_run_prompt.ipynb)에서는 Amazon Bedrock 런타임에서 Claude 3 Haiku 모델을 사용해 주어진 주제에 대한 프레젠테이션 내용을 생성합니다.
-
-<img src="./imgs/basic_workflow_serial.png"  width="600">
-
-<img src="./imgs/basic_workflow_parallel.png"  width="600">
-
+* [Basic 버전](./01_basic_run_prompt.ipynb)에서는 Amazon Bedrock 런타임에서 Claude 3 Haiku 모델을 사용해 주어진 주제에 대한 프레젠테이션 내용을 생성합니다.
     * 10장의 프레젠테이션을 생성하기 위해 다음과 같은 단계를 거칩니다.
         * 1) 설정한 주제로 프레젠테이션의 개요를 생성하는 프롬프트 생성 
         * 2) 위에서 만든 프롬프트를 사용해 프레젠테이션 개요 생성
@@ -20,8 +15,12 @@
 
     * 위 단계를 직렬로 실행한 결과와 3,4의 단계를 병렬로 동시에 실행한 결과를 비교합니다.
         * 테스트를 했을 때, 동일한 프레젠테이션 내용을 만들기 위해 걸린 시간을 계산했을 때 병렬로 실행했을 때 걸린 시간(44ms)이 직렬로 실행했을 때(57ms)보다 짧았습니다.
+        |      직렬로 실행       |         병렬로 실행         |                                                                   
+        | :-----------------------: | :--------------------------: |
+        | <a> <img width="300px" src=""./imgs/basic_workflow_serial.png" > </a> | <a> <img width="300px" src=""./imgs/basic_workflow_parallel.png" > </a> |
+        | 44ms | 57ms |
 
-* Advanced (02_advanced_toolNode_run_prompt.ipynb)에서는 ToolNode를 활용하는 방법을 제공합니다. 
+* [Advanced 버전](./02_advanced_toolNode_run_prompt.ipynb)에서는 ToolNode를 활용하는 방법을 제공합니다. 
 
 <img src="./imgs/advanced_workflow.png"  width="600">
 

@@ -5,7 +5,7 @@
 
 
 ## 주요 기능
-### [Basic 버전](./01_basic_run_prompt.ipynb)에서는 Amazon Bedrock 런타임에서 Claude 3 Haiku 모델을 사용해 주어진 주제에 대한 프레젠테이션 내용을 생성합니다.
+- [Basic 버전](./01_basic_run_prompt.ipynb)에서는 Amazon Bedrock 런타임에서 Claude 3 Haiku 모델을 사용해 주어진 주제에 대한 프레젠테이션 내용을 생성합니다.
     - 10장의 프레젠테이션을 생성하기 위해 다음과 같은 단계를 거칩니다.
         - 1) 설정한 주제로 프레젠테이션의 개요를 생성하는 프롬프트 생성 
         - 2) 위에서 만든 프롬프트를 사용해 프레젠테이션 개요 생성
@@ -20,7 +20,7 @@
         |<img width="300px" src=""./imgs/basic_workflow_serial.png" > | <img width="300px" src=""./imgs/basic_workflow_parallel.png" > |
         | 44ms | 57ms |
 
-### [Advanced 버전](./02_advanced_toolNode_run_prompt.ipynb)에서는 ToolNode를 활용하는 방법을 제공합니다. 
+- [Advanced 버전](./02_advanced_toolNode_run_prompt.ipynb)에서는 ToolNode를 활용하는 방법을 제공합니다. 
 
 <img src="./imgs/advanced_workflow.png"  width="600">
 
@@ -59,7 +59,7 @@
 1. [00_setup.ipynb 실행](./00_setup.ipynb)
 2. [01_basic_run_prompt.ipynb 실행](./01_basic_run_prompt.ipynb)
 3. [02_advanced_toolNode_run_prompt.ipynb 실행](./02_advanced_toolNode_run_prompt.ipynb)
-4. 02_advanced_toolNode_run_prompt.ipynb 에서 생성된 프레젠테이션 대표 이미지는 지정된 출력 디렉토리(img_output 폴더)에 저장됨
+4. 02_advanced_toolNode_run_prompt.ipynb 에서 생성된 프레젠테이션 대표 이미지는 지정된 출력 디렉토리(img_output 폴더)에 저장됩니다.
 
 ## 추가 리소스
 - [Anthropic Claude 설명서](https://docs.anthropic.com/claude/docs/intro-to-claude)

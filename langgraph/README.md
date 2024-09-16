@@ -16,10 +16,10 @@
     - 위 단계를 직렬로 실행한 결과와 3,4의 단계를 병렬로 동시에 실행한 결과를 비교합니다.
         - 테스트를 했을 때, 동일한 프레젠테이션 내용을 만들기 위해 걸린 시간을 계산했을 때 병렬로 실행했을 때 걸린 시간(44ms)이 직렬로 실행했을 때(57ms)보다 짧았습니다.
      
-     
-        |      직렬로 실행       |         병렬로 실행         |                                                                   
+
+        |      병렬로 실행       |         직렬로 실행         |                                                                   
         | :-----------------------: | :--------------------------: |
-        |<img width="300px" src="./imgs/basic_workflow_serial.png" > | <img width="300px" src="./imgs/basic_workflow_parallel.png" > |
+        | <img width="300px" src="./imgs/basic_workflow_parallel.png" > | <img width="300px" src="./imgs/basic_workflow_serial.png" > |
         | 44ms | 57ms |
 
 - [Advanced 버전](./02_advanced_toolNode_run_prompt.ipynb)에서는 ToolNode를 활용하는 방법을 제공합니다.

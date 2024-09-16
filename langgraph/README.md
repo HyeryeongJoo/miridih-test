@@ -1,7 +1,8 @@
 # AI-Powered 프레젠테이션 생성 with Prompt Chaining, LangGrpah
 
 ## 개요
-이 저장소에는 Amazon Bedrock 런타임에서 Anthropic의 Claude 3 Haiku, Amazon의 Titan Image Generator v2 모델을 사용해 프레젠테이션의 내용과 대표 이미지를 자동으로 작성하는 Python 예제 코드가 포함되어 있습니다. 10장의 프레젠테이션의 내용을 만들 때, LLM의 최대 출력 토큰 한계를 해결하기 위해 Prompt Chaining 기법을 사용하여 두 번에 나누어 생성합니다. 1-5장, 6-10장을 만드는 프롬프트를 각각 생성합니다. 
+이 저장소에는 Amazon Bedrock 런타임에서 Anthropic의 Claude 3 Haiku, Amazon의 Titan Image Generator v2 모델을 사용해 프레젠테이션의 내용과 대표 이미지를 자동으로 작성하는 Python 예제 코드가 포함되어 있습니다. 10장의 프레젠테이션의 내용을 만들 때, LLM의 최대 출력 토큰 한계를 해결하기 위해 Prompt Chaining 기법을 사용하여 두 번에 나누어(1-5장, 6-10장) 생성합니다.
+
 
 ## 주요 기능
 * Basic (01_basic_run_prompt.ipynb)에서는 Amazon Bedrock 런타임에서 Claude 3 Haiku 모델을 사용해 주어진 주제에 대한 프레젠테이션 내용을 생성합니다.
